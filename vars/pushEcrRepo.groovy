@@ -8,10 +8,16 @@ pipeline {
         VERSION = "${BUILD_NUMBER}"
         PROJECT = "${projectName}"
         IMAGE = "$PROJECT:$VERSION"
-        ECRURL = 'https://336466435446.dkr.ecr.ap-south-1.amazonaws.com/${projectName}'
-        ECRCRED = 'ecr:ap-south-1:awscredentials'
+        ECRURL = 'https://845317861853.dkr.ecr.ap-south-1.amazonaws.com/${projectName}'
+        ECRCRED = 'ecr:ap-south-1:aws_jmsth40_jenkins_ecr'
     }
     stages {
+      stage('build'){
+             
+             steps{
+                 sh 'mvn package'
+             }
+         }
          stage('Image Build'){
              steps{
                  script{
